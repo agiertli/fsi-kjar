@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- <parent>
+		<groupId>org.jbpm.demo</groupId>
+		<artifactId>bpm-mobile-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent> -->
+    <groupId>org.jbpm.demo</groupId>
+
+	<artifactId>bpm-mobile-workflows</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+
+	<packaging>kjar</packaging>
+	<name>bpm-mobile-workflows</name>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<!-- Pushes Deployment to BC to prevent KIE-Server Restart -->
+	<distributionManagement>
+		<repository>
+			<id>guvnor-m2-repo</id>
+			<name>maven repo</name>
+			<url>http://localhost:8080/business-central/maven2/</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
+ 
+	<dependencies>
+
+		<!-- Internal Project Dependencies -->
+		<dependency>
+			<groupId>org.jbpm.demo</groupId>
+			<artifactId>bpm-mobile-models</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm.demo</groupId>
+			<artifactId>bpm-mobile-utils</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.4.10</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-internal</artifactId>
+      <version>7.18.0.Final-redhat-00002</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.optaplanner</groupId>
+      <artifactId>optaplanner-core</artifactId>
+      <version>7.18.0.Final-redhat-00002</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.optaplanner</groupId>
+      <artifactId>optaplanner-persistence-jaxb</artifactId>
+      <version>7.18.0.Final-redhat-00002</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-api</artifactId>
+      <version>7.18.0.Final-redhat-00002</version>
+      <scope>provided</scope>
+    </dependency>
+
+	</dependencies>
+
+	<build>
+	    <plugins>
+      <plugin>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-maven-plugin</artifactId>
+        <version>7.18.0.Final-redhat-00002</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+	</build>
+
+</project>
